@@ -16,19 +16,18 @@ always one winner and one loser; there are no ties. A team receives 3 points if 
 will compete against all other teams exactly once. It's also guaranteed that the tournament will always have at least two teams.
 '''
 
-HOME_TEAM_WON = 1
+home_team_won = 1
 def tournamentWinner(competitions, results):
     current_best_team = ""
     scores = {current_best_team: 0}
     for counter, competition in enumerate(competitions):
         result = results[counter]
         home_team, away_team = competition
-        winning_team = home_team if result == HOME_TEAM_WON else away_team
+        winning_team = home_team if result == home_team_won else away_team
         update_score(winning_team, 3, scores)
         if scores[winning_team] > scores[current_best_team]:
             current_best_team = winning_team
     return current_best_team
-
 
 def update_score(winning_team, points, scores):
     if winning_team not in scores:
